@@ -4,6 +4,10 @@ let io = require('socket.io')(3000),
 
 	app.use(express.static('public'));
 
+	app.get('/', (req, res) => {
+		sendFile('index.html');
+	});
+
 io.on('connect', (socket) => {
     io.emit('user connected', socket.id);
     console.log('User ' + socket.id + ' connected');
