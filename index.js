@@ -1,4 +1,8 @@
-let io = require('socket.io')(3000);
+let io = require('socket.io')(3000),
+	express = require('express'),
+	app = express();
+
+	app.use(express.static('public'));
 
 io.on('connect', (socket) => {
     io.emit('user connected', socket.id);
@@ -20,3 +24,5 @@ io.on('connect', (socket) => {
     });
 
 });
+
+    app.listen(8080);
